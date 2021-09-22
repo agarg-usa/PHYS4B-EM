@@ -9,5 +9,14 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 data = np.loadtxt("data.txt")
-plt.plot(data)
+x = np.array(list(zip(*data))[0])
+y = np.array(list(zip(*data))[1])
+
+plt.plot(x, y, 'o')
+
+w, b  = np.polyfit(x,y,deg=1)
+line  = w * x + b
+
+plt.plot(x, line, "r--")
+
 plt.show()
